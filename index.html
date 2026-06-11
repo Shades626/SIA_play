@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIA.play</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="left-half">
+        <div class="logo">
+          <span class="logo_logo"><i class="fa-solid fa-headphones"></i></span>
+          <span class="logo_sia">SIA</span>
+          <span class="logo_play">.play</span>
+        </div>
+        <div class="home-icon"><i class="fa-solid fa-house"></i></div>
+        <div class="search-bar">
+          <div class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <input
+            type="text"
+            class="input-box"
+            placeholder="What do you want to listen to?"
+          />
+          <div class="browse-icon">
+            <i class="fa-regular fa-folder-closed"></i>
+          </div>
+        </div>
+      </div>
+      <div class="right-half">
+        <div class="right-half-p1">
+          <p>Premium</p>
+          <p>Support</p>
+        </div>
+        <div class="right-half-p2">
+          <div class="signup">Sign Up</div>
+          <button class="login-btn">Log In</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main">
+
+      <!-- First Section(Your Library) -->
+      <div class="your-library-display">
+        <div class="your-library-display-head">
+          <div class="your-library-display-notif-pt1">
+            <div class="collapse-library-button">
+              <i class="fa-solid fa-arrow-left"></i>
+            </div>
+            <span>Your Library</span>
+          </div>
+          <div class="your-library-display-notif-pt2">
+            <button class="create-btn">
+              <i class="fa-solid fa-plus"></i> Create
+            </button>
+            <button class="expand-your-library-btn">
+              <i class="fa-solid fa-expand"></i>
+            </button>
+          </div>
+        </div>
+        <div class="your-library-display-btn-container">
+          <button id="playlist-btn">Playlists</button>
+          <button id="artists-btn">Artists</button>
+          <button id="albums-btn">Albums</button>
+        </div>
+        <div class="recent-display">
+          <button class="recent-display-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button class="recent-dropdown-btn">
+            Recents <i class="fa-solid fa-list"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Second section(info screen) -->
+      <div class="info-screen">
+        <div class="info-screen-btn-container">
+          <button>All</button>
+          <button>Music</button>
+          <button>Playlists</button>
+        </div>
+        <div class="info-screen-playlist-display"></div>
+      </div>
+
+      <!-- third section(now playing display) -->
+      <div class="now-playing">
+
+        <!-- song details header -->
+        <div class="playlist-display-header">
+          <div class="playlist-display-header-pt1">
+            <span id="collapse-info-screen-btn"
+              ><i class="fa-solid fa-arrow-left"></i
+            ></span>
+            <span id="playlist-name-display">Alone</span>
+          </div>
+          <div class="playlist-display-header-pt2">
+            <span id="more-options-btn"
+              ><i class="fa-solid fa-ellipsis"></i
+            ></span>
+            <span id="now-playing-expand-btn"
+              ><i class="fa-solid fa-expand"></i
+            ></span>
+          </div>
+        </div>
+
+        <!-- now playing pt 1 song name info and album cover if available-->
+        <div class="now-playing-pt1">
+          <img
+            src="/assets/covers/BlameU_Ordeal_cover.jpg"
+            alt="Album/song Cover"
+            id="album-song-cover-img"
+          />
+
+          <!-- song details -->
+          <div class="details-button-container">
+            <div class="song-details">
+              <span id="song-name">Blame U</span>
+              <span id="song-artiste">Odeal</span>
+            </div>
+            <div class="song-share-save-btn-container">
+              <button id="song-share-btn">
+                <i class="fa-regular fa-share-from-square"></i>
+              </button>
+              <button id="song-save-btn">
+                <i class="fa-solid fa-circle-plus"></i>
+              </button>
+            </div>
+        </div>
+
+        <!-- similar songs display-->
+
+        <div class="similar-songs-display">
+          <span class="similar-songs-text">Songs like: Blame U</span>
+          <div class="similar-song-display-container">
+            <div class="similar-song-card">
+              <div class="similar-song-background-holder"><i class="fa-solid fa-play"></i></div>
+              <div class="pseudo_container">
+                <div class="similar-song-info">
+                  <span class="similar-song-name">Be Easy</span>
+                  <span class="similar-song-artist">Odeal</span>
+                </div>
+                <span class="more_options"><i class="fa-solid fa-ellipsis"></i></span>
+              </div>
+            </div>
+
+          <!-- Test similar song card -->
+
+
+            <div class="similar-song-card">
+              <div class="similar-song-background-holder"><i class="fa-solid fa-play"></i></div>
+              <div class="pseudo_container">
+                <div class="similar-song-info">
+                  <span class="similar-song-name">Be Easy</span>
+                  <span class="similar-song-artist">Odeal</span>
+                </div>
+                <span class="more_options"><i class="fa-solid fa-ellipsis"></i></span>
+              </div>
+            </div>
+            <div class="similar-song-card">
+              <div class="similar-song-background-holder"><i class="fa-solid fa-play"></i></div>
+              <div class="pseudo_container">
+                <div class="similar-song-info">
+                  <span class="similar-song-name">Be Easy</span>
+                  <span class="similar-song-artist">Odeal</span>
+                </div>
+                <span class="more_options"><i class="fa-solid fa-ellipsis"></i></span>
+              </div>
+            </div>
+            <div class="similar-song-card">
+              <div class="similar-song-background-holder"><i class="fa-solid fa-play"></i></div>
+              <div class="pseudo_container">
+                <div class="similar-song-info">
+                  <span class="similar-song-name">Be Easy</span>
+                  <span class="similar-song-artist">Odeal</span>
+                </div>
+                <span class="more_options"><i class="fa-solid fa-ellipsis"></i></span>
+              </div>
+            </div>
+            <div class="similar-song-card">
+              <div class="similar-song-background-holder"><i class="fa-solid fa-play"></i></div>
+              <div class="pseudo_container">
+                <div class="similar-song-info">
+                  <span class="similar-song-name">Be Easy</span>
+                  <span class="similar-song-artist">Odeal</span>
+                </div>
+                <span class="more_options"><i class="fa-solid fa-ellipsis"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- about artist container -->
+        <div class="about-artist-container">
+          <div class="about-artist-text-image-container">About the artist</div>
+          <div class="about-artist-info-button-container">
+            <div class="about-artist-info">
+              <div class="pseudo-container">
+                <span class="about-artist-name-display">Odeal</span>
+                <span class="monthly-listeners-display">25,234,897 <br>monthly listeners</span>
+              </div>
+              <span class="follow-artist-btn">Follow</span>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </body>
+</html>
