@@ -40,7 +40,7 @@ nav{
 .left-half{
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--text-dark);
 }
 .logo{
   font-size: 2.5rem;
@@ -83,14 +83,14 @@ nav{
 .home-icon{
   font-size: 1.7rem;
   background-color: #1f1f1f;
-  color: rgb(179, 179, 179);
-  padding: 8px;
+  color: var(--text-dark-fade);
+  padding: 0.5rem;
   border-radius: 50%;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   transition: 0.2s;
 }
 .home-icon:hover{
-  color: white;
+  color: var(--text-dark);
   transform: scale(1.05);
   background-color: #292929;
   cursor: pointer;
@@ -167,6 +167,7 @@ nav{
   color: white;
   transform: scale(1.05);
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .right-half-p2{
@@ -176,6 +177,7 @@ nav{
 .signup-btn{
   color: var(--text-dark-fade);
   font-weight: 500;
+  font-size: 1rem;
   transition: 0.2s;
 }
 .signup-btn:hover{
@@ -184,8 +186,7 @@ nav{
   transform: scale(1.05);
 }
 .login-btn{
-  height: 3rem;
-  width: 7rem;
+  padding: 0.5rem 1rem;
   border-radius: 15rem;
   border: none;
   background-color: white;
@@ -203,18 +204,20 @@ nav{
 /* Main content styling */
 .main{
   display: grid;
-  grid-template-columns: var(--main-col1, 2fr) var(--main-col2, 3fr) var(--main-col3, 1.5fr);
+  grid-template-columns: var(--main-col1, 1.5fr) var(--main-col2, 3fr) var(--main-col3, 1.5fr);
   grid-template-rows: repeat(2, 75vh);
   gap: 0.5rem;
   padding: 0.5rem;
-}
-.main > div div{
-  padding: 0.5rem 0.5rem;
-  border-radius: 5px;
+  margin-bottom: 30vh;
 }
 .main > div{
   background-color: #101010;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
   border-radius: 10px;
+}
+.your-library-display > div{
+  padding: 0.5rem 0.5rem;
 }
 .collapse-library-button{
   color: white;
@@ -225,6 +228,11 @@ nav{
   justify-content: space-between;
   align-items: baseline;
 }
+.your-library-display-notif-pt2{
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
 .your-library-display span{
   color: white;
   font-size: 0.9rem;
@@ -234,7 +242,7 @@ nav{
   background-color: #1b1b1b;
   border: none;
   color: white;
-  padding: 9px 18px;
+  padding: 0.5rem 1rem;
   border-radius: 15px;
   font-weight: 600;
   transition: 0.2s;
@@ -246,7 +254,7 @@ nav{
   border: none;
   color: rgb(179, 179, 179);
   background-color: #101010;
-  padding: 9px 9px;
+  padding: 0.5rem 1rem;
   border-radius: 50%;
   transition: 0.2s;
 }
@@ -255,7 +263,7 @@ nav{
   color: white; 
 }
 .your-library-display-btn-container button{
-  padding: 9px 25px;
+  padding: 0.5rem 1rem;
   border: none;
   background-color: #1b1b1b;
   color: white;
@@ -297,12 +305,15 @@ nav{
 }
 
 /* second section styling */
+.info-screen > div{
+  padding: 0.5rem 0.5rem;
+}
 .info-screen-btn-container button{
   background-color: #1b1b1b;
   position: sticky;
   border: none;
   color: rgb(179, 179, 179);
-  padding: 9px 18px;
+  padding: 0.5rem 1rem;
   border-radius: 15px;
   font-weight: 600;
   transition: 0.2s;
@@ -316,13 +327,19 @@ nav{
 .now-playing{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
   overflow-y: auto;
+  color: var(--text-dark);
+}
+.now-playing > div{
+  padding: 0.5rem 0.5rem;
+  border-radius: 10px;
 }
 .now-playing::-webkit-scrollbar{
   width: 12px;
 }
 .now-playing::-webkit-scrollbar-track{
-  background: var(--button-dark-hover);
   border-radius: 6px;
 }
 .now-playing::-webkit-scrollbar-thumb{
@@ -338,6 +355,7 @@ nav{
 }
 
 .playlist-display-header{
+  width: 90%;
   display: flex;
   justify-content: space-between;
   color: white;
@@ -353,11 +371,18 @@ nav{
   border-radius: 50%;
   transition: 0.2s;
 }
+#playlist-name-display{
+  font-weight: 600;
+  font-size: 1rem;
+}
 
 .now-playing-pt1{
   width: 90%;
   padding: 0 0;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   color: white;
 }
 .now-playing-pt1 > div{
@@ -365,7 +390,8 @@ nav{
 }
 #album-song-cover-img{
   width: 100%;
-  border-radius: 10px;
+  border-radius: 7px;
+  margin-bottom: 1rem;
 }
 .details-button-container{
   display: flex;
@@ -401,19 +427,62 @@ nav{
   font-size: 1rem;
   color: rgb(179, 179, 179);
 }
+.similar-songs-display{
+  padding: 0 0.5rem;
+  width: 90%;
+}
+.similar-songs-display > span{
+  margin-bottom: 0.5rem;
+  display: block;
+}
 .similar-song-display-container{
   margin: 0 auto;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 200px;
+  gap: 1rem;
   overflow-x: auto;
-  padding-bottom: 10px;
+  overflow-y: hidden;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
 }
+.similar-song-display-container:hover{
+  overflow-x: auto;
+}
+.similar-song-display-container::-webkit-scrollbar{
+  width: 12px;
+}
+.similar-song-display-container::-webkit-scrollbar-track{
+  border-radius: 6px;
+  width: 12px;
+  background: var(--text-dark-fade);
+}
+.similar-song-display-container::-webkit-scrollbar-thumb{
+  background: var(--text-dark-fade);
+  border-radius: 6px;
+}
+.similar-song-card{
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 0.5rem;
+}
+.more-options{
+  color: var(--text-dark-fade);
+  transition: 0.2s;
+}
+.more-options:hover{
+  color: var(--text-dark);
+  transform: scale(1.1);
+  cursor: pointer;
+}
 .similar-song-background-holder{
-  width: 90%;
+  width: 100%;
   height: 100px;
   margin: 0 auto;
+  border-radius: 5px;
   background-image: 
     linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), 
     url(/assets/covers/Be_Easy_Odeal_cover.jpg);
@@ -422,7 +491,7 @@ nav{
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 .similar-song-background-holder:hover{
   background-image: 
@@ -442,17 +511,52 @@ nav{
 .similar-song-artist{
   color: rgb(179, 179, 179);
 }
-.pseudo_container{
+.pseudo-container{
   display: flex;
   justify-content: space-between;
+}
+.pseudo_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+.about-artist-container{
+  padding: 0.5rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
   align-items: center;
+  border-radius: 10px;
+  height: max-content;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  height: max-content;
+  width: 90%;
+  background-color:#292929;
+  border: 15px;
+  
 }
 .about-artist-text-image-container{
-  padding: 1rem;
   height: 150px;
+  font-size: 0.8rem;
   background-image: url(/assets/covers/odeal.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 90%;
+  align-self: center;
   font-weight: 550;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.about-artist-info-button-container{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  padding: 0.5rem;
+  align-self: center;
 }
 .similar-song-background-holder i{
   font-size: 1.5rem;
@@ -462,8 +566,10 @@ nav{
   font-size: 1.5rem;
 }
 .monthly-listeners-display{
+  display: flex;
+  flex-direction: column;
   font-size: 0.8rem;
-  color: rgb(179, 179, 179);
+  color: var(--text-dark-fade);
 }
 .about-artist-info span{
   display: block;
@@ -471,11 +577,13 @@ nav{
 .about-artist-info{
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   align-items: center;
+  width: 90%;
 }
 .follow-artist-btn{
   padding: 0.5rem;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   border-radius: 15px;
   border: 0.5px solid rgb(179, 179, 179);
   transition: 0.2s;
@@ -486,35 +594,33 @@ nav{
   cursor: pointer;
 }
 
-.about-artist-container{
-  height: max-content;
-  width: 90%;
-  background-color:#292929;
-  border: 15px;
-  margin: 0 auto;
-  padding: 0.5rem;
-}
+
 
 .about-artist-description{
   display: block;
   height: 40px;
   overflow-y: hidden;
+  padding: 0 0.5rem;
 }
 .credits-for-song{
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  gap: 0.5rem;
+  width: 90%;
+  margin: 0.5rem auto;
   background-color: #2c2c2c;
 }
 .credits-for-song-container{
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  gap: 0.5rem;
 }
 .credits-for-song-header{
   display: flex;
   justify-content: space-between;
+  width: 90%;
+  align-self: center;
 }
 
 .credits-display{
@@ -526,17 +632,26 @@ nav{
   color: var(--text-dark-fade);
   font-size: 1rem;
 }
+.show-all-btn:hover{
+  color: var(--text-dark);
+  cursor: pointer;
+}
 .credit-holder{
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: 0.2s;
 }
 .credit-holder:hover{
   background-color: var(--background-dark);
+  cursor: pointer;
 }
 .credit-text-contain{
   display: flex;
   flex-direction: column;
+  margin-bottom: 0.5rem;
 }
 .credit-artist-name{
   font-size: 1rem;
@@ -547,14 +662,13 @@ nav{
   color: var(--text-dark-fade);
 }
 .credit-follow-btn{
-  padding: 0.5rem;
-  font-size: 0.7rem;
-  border: 1px solid var(--text-dark);
-  color: var(--text-dark);
-  border-radius: 30px;
+  font-size: 0.8rem;
+  color: var(--text-dark-fade);
+  border-radius: 20px;
 }
 .credit-follow-btn:hover{
   cursor: pointer;
+  color: var(--text-dark);
 }
 #player-image{
   height: 60px;
@@ -563,15 +677,18 @@ nav{
 }
 .player-controls-container{
   color: var(--text-dark);
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   position: fixed;
   bottom: 0;
   left: 0;
   display: flex;
-  gap: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   width: 100%;
-  height: 10vh;
+  min-height: 10vh;
+  max-height: 20vh;
   z-index: 1000;
 }
 .player-text-container span{
@@ -694,9 +811,7 @@ input[type="range"]::-webkit-slider-runnable-track{
 .right-controls{
   display: flex;
   align-items: end;
-  text-align: end;
-  justify-content: end;
-  gap: 0.8rem;
+  gap: 0.5rem;
   width: 20%;
   /* background-color: red; */
 }
@@ -750,4 +865,112 @@ input[type="range"]::-webkit-slider-runnable-track{
 .expand-song-btn:hover{
   color: var(--text-dark);
   cursor: pointer;
+}
+
+
+/* Media  Queries */
+
+
+/* media queries for Laptops(L) */
+@media (max-width: 1024px){
+  /* navbar restyling */
+
+  /* logo resizinng */
+  .logo{
+    font-size: 2rem;
+  }
+  .logo span{
+    letter-spacing: 1px;
+  }
+
+  /* home icon resizing */
+
+  .home-icon{
+    font-size: 1.5rem;
+  }
+
+  /* side-bar resizing */
+  .search-bar{
+    width: 25rem;
+    height: 2.5rem;
+  }
+  
+  .search-icon{
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .input-box{
+    font-size: 1rem;
+  }
+
+  .browse-icon{
+    font-size: 1.1rem;
+  }
+
+  .right-half-p1 p{
+    font-size: 0.8rem;
+    padding: 0 0.2rem;
+  }
+ 
+  /* signup btn resizing */
+  .signup-btn{
+    font-size: 0.8rem;
+  }
+
+  .login-btn{
+    font-size: 0.8rem;
+  }
+
+  /* main styling */
+  .main{
+    grid-template-columns: var(--main-col1, 1.5fr) var(--main-col2, 2fr) var(--main-col3, 1.5fr);
+  }
+
+  /* player reconstruction */
+  #player-image{
+    height: 50px;
+    width: 50px;
+  }
+  .player-controls-container{
+    padding: 0.5rem 20rem;
+  }
+  .player-song-image-name-save-btn-container{
+    width: 20%;
+    gap: 0.8rem;
+  }
+
+  .right-controls{
+    margin-right: 2rem;
+  }
+}
+
+/* Tablet Screen */
+
+@media (max-width: 768px){
+  .logo{
+    font-size: 1.5rem;
+  }
+  .logo span{
+    font-size: 1rem;
+  }
+  .home-icon{
+    font-size: 1rem;
+  }
+
+
+  .search-bar{
+    width: 15rem;
+  }
+  .search-icon{
+    font-size: 0.8rem;
+  }
+  .input-box{
+    font-size: 0.7rem;
+    width: 70%;
+  }
+  .browse-icon{
+    font-size: 0.8rem;
+    
+  }
 }
