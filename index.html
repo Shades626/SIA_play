@@ -235,41 +235,50 @@
     </div>
 
       <div class="player-controls-container">
+      
+      <!-- Top Row: Song Info and Mobile Play Button -->
+      <div class="player-row-top">
         <div class="player-song-image-name-save-btn-container">
           <div class="pseudo-container">
-            <img id="player-image" src="/assets/covers/BlameU_Ordeal_cover.jpg" alt="This is the current song playing's cover">
+            <img id="player-image" src="/assets/covers/BlameU_Ordeal_cover.jpg" alt="Album Cover">
             <div class="player-text-container">
               <span>Blame U</span>
               <span>Odeal</span>
             </div>
           </div>
           <span class="save_to_playlist_controls"><i class="fa-solid fa-circle-plus"></i></span>
-          <span class="mobile_play_pause_btn"><i class="fa-solid fa-play"></i></span>
         </div>
-        <div class="controls-container">
-          <div class="top-controls">
-            <button class="shuffle-btn"><i class="fa-solid fa-shuffle"></i></button>
-            <button class="reverse-btn"><i class="fa-solid fa-backward-step"></i></button>
-            <button class="play-pause-btn"><i class="fa-solid fa-play"></i></button>
-            <button class="forward-btn"><i class="fa-solid fa-forward-step"></i></button>
-            <button class="repeat-btn"><i class="fa-solid fa-repeat"></i></button>
-          </div>
-          <div class="bottom-controls">
-            <span class="initial-time-song">0:00</span>
-            <input type="range" class="song-range">
-            <span class="closing-time-song">0:00</span>
-          </div>
+        <span class="mobile_play_pause_btn"><i class="fa-solid fa-play"></i></span>
+      </div>
+
+      <!-- Bottom Controls: Desktop full controls and Range Slider -->
+      <div class="controls-container">
+        <div class="top-controls">
+          <button class="shuffle-btn"><i class="fa-solid fa-shuffle"></i></button>
+          <button class="reverse-btn"><i class="fa-solid fa-backward-step"></i></button>
+          <button class="play-pause-btn"><i class="fa-solid fa-play"></i></button>
+          <button class="forward-btn"><i class="fa-solid fa-forward-step"></i></button>
+          <button class="repeat-btn"><i class="fa-solid fa-repeat"></i></button>
         </div>
-        <div class="right-controls">
-          <button class="lyrics-btn"><i class="fa-solid fa-microphone"></i></button>
-          <button class="queue-btn"><i class="fa-solid fa-clipboard-list"></i></button>
-          <div class="volume-control-container">
-            <span class="volume-btn"><i class="fa-solid fa-volume-high"></i></span>
-            <input type="range">
-          </div>
-          <button class="expand-song-btn"><i class="fa-solid fa-expand"></i></button>
+        <div class="bottom-controls">
+          <span class="initial-time-song">0:00</span>
+          <input type="range" class="song-range">
+          <span class="closing-time-song">0:00</span>
         </div>
       </div>
+
+      <!-- Right Controls: Volume/Lyrics -->
+      <div class="right-controls">
+        <button class="lyrics-btn"><i class="fa-solid fa-microphone"></i></button>
+        <button class="queue-btn"><i class="fa-solid fa-clipboard-list"></i></button>
+        <div class="volume-control-container">
+          <span class="volume-btn"><i class="fa-solid fa-volume-high"></i></span>
+          <input type="range">
+        </div>
+        <button class="expand-song-btn"><i class="fa-solid fa-expand"></i></button>
+      </div>
+    </div>
+    
 
     
   </body>
