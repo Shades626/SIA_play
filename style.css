@@ -700,13 +700,15 @@ nav {
 
 .player-text-container span{
   display: block;
+  font-size: 0.8rem;
 }
 .player-song-image-name-save-btn-container{
   display: flex;
   align-items: center;
   gap: 1rem;
-  width: 25%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
+  margin-bottom: 1rem;
   /* background-color: red; */
 }
 .mobile_play_pause_btn{
@@ -1046,6 +1048,7 @@ input[type="range"]::-webkit-slider-runnable-track { height: 4px; background: va
   .main > div:nth-child(1){
     grid-column: 1 / 2;
     grid-row: 1 / 3;
+    height: 100%;
   }
   .main > div:nth-child(2){
     overflow-y: auto;
@@ -1083,7 +1086,7 @@ input[type="range"]::-webkit-slider-runnable-track { height: 4px; background: va
     gap: 0.5rem;
   }
 
-  .player-row-top { width: 100%; justify-content: space-between; }
+  .player-row-top { width: 90%; justify-content: space-between; }
   .right-controls{
     display: none;
   }
