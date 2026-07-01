@@ -1,294 +1,261 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIA.play</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="all.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav>
-      <div class="left-half">
-        <div class="logo">
-          <span class="logo_logo"><i class="fa-solid fa-headphones"></i></span>
-          <span class="logo_sia">SIA</span>
-          <span class="logo_play">.play</span>
-        </div>
-        <span class="home-icon"><i class="fa-solid fa-house"></i></span>
-        <div class="search-bar">
-          <span class="search-icon">
-            <i class="fa-solid fa-magnifying-glass"></i> 
-          </span>
-          <input
-            id="search-input"
-            type="text"
-            class="input-box"
-            placeholder="What do you want to listen to?"
-          />
-          <span class="browse-icon">
-            <i class="fa-regular fa-folder-closed"></i>
-          </span>
-        </div>
-      </div>
-      <div class="right-half">
-        <div class="right-half-p1">
-          <span class="theme-toggle-btn" id="theme-toggle-btn"><i class="fa-regular fa-sun"></i></span>
-          <p>Premium</p>
-          <p>Support</p>
-        </div>
-        <div class="right-half-p2">
-          <span class="signup-btn">Sign Up</span>
-          <button class="login-btn">Log In</button>
-        </div>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sia.play - Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-     <!-- Main Content -->
-    <div class="main">
-        <!-- First Section(Your Library) -->
-        <div class="your-library-display">
-          <div class="your-library-display-head">
-            <div class="your-library-display-notif-pt1">
-              <span class="collapse-library-button">
-                <i class="fa-solid fa-arrow-right"></i>
-              </span>
-              <span class="yourLibrary-display">Your Library</span>
-            </div>
-            <div class="your-library-display-notif-pt2">
-              <span class="create-btn">
-                <i class="fa-solid fa-plus"></i> Create
-              </span>
-              <button class="expand-your-library-btn">
-                <i class="fa-solid fa-expand"></i>
-              </button>
-            </div>
-          </div>
-          <div class="your-library-display-btn-container">
-            <span class="create_playlist_btn"><i class="fa-solid fa-plus"></i></span>
-            <button id="playlist-btn">Playlists</button>
-            <button id="artists-btn">Artists</button>
-            <button id="albums-btn">Albums</button>
-          </div>
-          <div class="recent-display">
-            <button class="recent-display-search">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <button class="recent-dropdown-btn">
-              Recents <i class="fa-solid fa-list"></i>
-            </button>
-          </div>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #121212;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    }
 
-          <div class="Playlist_display">
-              
-          </div>
+    .login-container {
+      background: rgba(24, 24, 24, 0.9);
+      padding: 60px 50px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-          <div class="theme-toggle-mobile-holder"> 
-            <span class="theme-toggle-mobile" id="theme-toggle-btn-mobile"><i class="fa-regular fa-sun"></i></span>
-          </div>
-        </div>
-        <!-- Second section(info screen) -->
-        <div class="info-screen">
-          <div class="info-screen-btn-container">
-            <button>All</button>
-            <button>Music</button>
-            <button>Playlists</button>
-          </div>
-          <div class="info-screen-playlist-display"></div>
-        </div>
+    .logo {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
 
-        <!-- third section(now playing display) -->
-      <div class="now-playing">
+    .logo_sia {
+      color: #1DB954;
+    }
 
-        <!-- song details header -->
-        <div class="playlist-display-header">
-          <div class="playlist-display-header-pt1">
-            <span id="collapse-info-screen-btn"
-              ><i class="fa-solid fa-arrow-left"></i
-            ></span>
-            <span id="playlist-name-display">Alone</span>
-          </div>
-          <div class="playlist-display-header-pt2">
-            <span id="more-options-btn"
-              ><i class="fa-solid fa-ellipsis"></i
-            ></span>
-            <span id="now-playing-expand-btn"
-              ><i class="fa-solid fa-expand"></i
-            ></span>
-          </div>
-        </div>
+    .logo_play {
+      color: #ffffff;
+    }
 
-        <!-- now playing pt 1 song name info and album cover if available-->
-        <div class="now-playing-pt1">
-          <img
-            src="/assets/covers/BlameU_Ordeal_cover.jpg"
-            alt="Album/song Cover"
-            id="album-song-cover-img"
-          />
+    .logo-icon {
+      font-size: 2.5rem;
+      color: #1DB954;
+      margin-bottom: 20px;
+      display: block;
+    }
 
-          <!-- song details -->
-          <div class="details-button-container">
-            <div class="song-details">
-              <span id="song-name">Blame U</span>
-              <span id="song-artiste">Odeal</span>
-            </div>
-            <div class="song-share-save-btn-container">
-              <button id="song-share-btn">
-                <i class="fa-regular fa-share-from-square"></i>
-              </button>
-              <button id="song-save-btn">
-                <i class="fa-solid fa-circle-plus"></i>
-              </button>
-            </div>
-        </div>
-        </div>
+    .subtitle {
+      color: #b3b3b3;
+      font-size: 0.95rem;
+      margin-bottom: 35px;
+      line-height: 1.6;
+    }
 
-        <!-- similar songs display-->
+    .login-btn {
+      background: #1DB954;
+      color: white;
+      border: none;
+      padding: 16px 45px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
 
-        <div class="similar-songs-display">
-          <span class="similar-songs-text">Songs like: Blame U</span>
-          <div class="similar-song-display-container">
-            <div class="similar-song-card">
-              <div class="similar-song-background-holder"><i class="fa-solid fa-play"></i></div>
-              <div class="pseudo-container">
-                <div class="similar-song-info">
-                  <span class="similar-song-name">Be Easy</span>
-                  <span class="similar-song-artist">Odeal</span>
-                </div>
-                <span class="more-options"><i class="fa-solid fa-ellipsis"></i></span>
-              </div>
-            </div>
+    .login-btn:hover {
+      background: #1ed760;
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(29, 185, 84, 0.3);
+    }
 
-            <div class="similar-song-card">
-              <div class="similar-song-background-holder"><i class="fa-solid fa-play"></i></div>
-              <div class="pseudo-container">
-                <div class="similar-song-info">
-                  <span class="similar-song-name">Be Easy</span>
-                  <span class="similar-song-artist">Odeal</span>
-                </div>
-                <span class="more-options"><i class="fa-solid fa-ellipsis"></i></span>
-              </div>
-            </div>
+    .login-btn:active {
+      transform: scale(0.98);
+    }
 
-            <div class="similar-song-card">
-              <div class="similar-song-background-holder"><i class="fa-solid fa-play"></i></div>
-              <div class="pseudo-container">
-                <div class="similar-song-info">
-                  <span class="similar-song-name">Be Easy</span>
-                  <span class="similar-song-artist">Odeal</span>
-                </div>
-                <span class="more-options"><i class="fa-solid fa-ellipsis"></i></span>
-              </div>
-            </div>
-          </div>
-        </div>
+    .login-btn i {
+      font-size: 1.3rem;
+    }
 
-        <!-- about artist container -->
-        <div class="about-artist-container">
-          <div class="about-artist-text-image-container">About the artist</div>
-          <div class="about-artist-info-button-container">
-            <div class="about-artist-info">
-              <div class="pseudo_container">
-                <span class="about-artist-name-display">Odeal</span>
-                <span class="monthly-listeners-display">25,234,897 <br>monthly listeners</span>
-              </div>
-              <span class="follow-artist-btn">Follow</span>
-            </div>
-          </div>
-          <span class="about-artist-description">
-            Odeal is a Nigerian singer, songwriter, and record producer. He
-            is known for his unique blend of Afrobeat, R&B, and pop music,
-            which has earned him a large following in Nigeria and beyond.
-          </span>
-        </div>
-        
-        <div class="credits-for-song">
-          <div class="credits-for-song-header">
-            <span class="credits-display">Credits</span>
-            <span class="show-all-btn">Show all</span>
-          </div>
-          <div class="credits-for-song-container">
-            <div class="credit-holder">
-              <div class="credit-text-contain">
-                <span class="credit-artist-name">Odeal</span>
-                <span class="credit-role">Main Artist</span>
-              </div>
-              <div class="credit-btn-holder">
-                <span class="credit-follow-btn">Follow</span>
-              </div>
-            </div>
+    .features {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      color: #666;
+      font-size: 0.85rem;
+    }
 
-             <div class="credit-holder">
-              <div class="credit-text-contain">
-                <span class="credit-artist-name">Odeal</span>
-                <span class="credit-role">Main Artist</span>
-              </div>
-              <div class="credit-btn-holder">
-                <span class="credit-follow-btn">Follow</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    .features span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-    <div class="player-controls-container">
+    .features i {
+      color: #1DB954;
+      font-size: 0.9rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 25px 0;
+    }
+
+    .footer-text {
+      color: #555;
+      font-size: 0.75rem;
+      margin-top: 20px;
+    }
+
+    .error-message {
+      background: rgba(255, 0, 0, 0.1);
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      color: #ff6b6b;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 40px 30px;
+      }
       
-      <!-- Top Row: Song Info and Mobile Play Button -->
-      <div class="player-row-top">
-        <div class="player-song-image-name-save-btn-container">
-          <div class="pseudo-container">
-            <img id="player-image" src="/assets/covers/BlameU_Ordeal_cover.jpg" alt="Album Cover">
-            <div class="player-text-container">
-              <span>Blame U</span>
-              <span>Odeal</span>
-            </div>
-          </div>
-          <span class="save_to_playlist_controls"><i class="fa-solid fa-circle-plus"></i></span>
-        </div>
-        <span class="mobile_play_pause_btn"><i class="fa-solid fa-play"></i></span>
-      </div>
+      .logo {
+        font-size: 2.2rem;
+      }
+      
+      .login-btn {
+        padding: 14px 30px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-      <!-- Bottom Controls: Desktop full controls and Range Slider -->
-      <div class="controls-container">
-        <div class="top-controls">
-          <button class="shuffle-btn"><i class="fa-solid fa-shuffle"></i></button>
-          <button class="reverse-btn"><i class="fa-solid fa-backward-step"></i></button>
-          <button class="play-pause-btn"><i class="fa-solid fa-play"></i></button>
-          <button class="forward-btn"><i class="fa-solid fa-forward-step"></i></button>
-          <button class="repeat-btn"><i class="fa-solid fa-repeat"></i></button>
-        </div>
-        <div class="bottom-controls">
-          <span class="initial-time-song">0:00</span>
-          <input type="range" class="song-range">
-          <span class="closing-time-song">0:00</span>
-        </div>
-      </div>
-
-      <!-- Right Controls: Volume/Lyrics -->
-      <div class="right-controls">
-        <button class="lyrics-btn"><i class="fa-solid fa-microphone"></i></button>
-        <button class="queue-btn"><i class="fa-solid fa-clipboard-list"></i></button>
-        <div class="volume-control-container">
-          <span class="volume-btn"><i class="fa-solid fa-volume-high"></i></span>
-          <input type="range">
-        </div>
-        <button class="expand-song-btn"><i class="fa-solid fa-expand"></i></button>
-      </div>
+  <div class="login-container">
+    <span class="logo-icon"><i class="fa-solid fa-headphones"></i></span>
+    
+    <div class="logo">
+      <span class="logo_sia">SIA</span><span class="logo_play">.play</span>
     </div>
     
+    <p class="subtitle">
+      Listen to music, discover new tracks,<br>
+      and create the perfect playlist
+    </p>
 
-    <script src="script.js"></script>
-  </body>
+    <div id="error-message" class="error-message"></div>
+
+    <button id="login-button" class="login-btn">
+      <i class="fa-brands fa-spotify"></i>
+      Continue with Spotify
+    </button>
+
+    <hr class="divider">
+
+    <div class="features">
+      <span><i class="fa-solid fa-check"></i> Free</span>
+      <span><i class="fa-solid fa-check"></i> High Quality</span>
+      <span><i class="fa-solid fa-check"></i> Unlimited</span>
+    </div>
+
+    <div class="footer-text">
+      By continuing, you agree to our Terms of Service
+    </div>
+  </div>
+
+  <script>
+    const CLIENT_ID = '2572b4b9181f4c148d3cccfb02b935f7';
+    const REDIRECT_URI = 'http://127.0.0.1:5500/callback.html';
+    const SCOPE = 'user-read-private user-read-email streaming user-top-read user-modify-playback-state user-read-playback-state';
+
+    // Check if there was an error in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+    
+    if (error) {
+      const errorMsg = document.getElementById('error-message');
+      errorMsg.textContent = `❌ Login failed: ${error.replace('_', ' ')}. Please try again.`;
+      errorMsg.classList.add('show');
+    }
+
+    function generateRandomString(length) {
+      const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const values = crypto.getRandomValues(new Uint8Array(length));
+      return values.reduce((acc, x) => acc + possible[x % possible.length], "");
+    }
+
+    async function generateCodeChallenge(verifier) {
+      const data = new TextEncoder().encode(verifier);
+      const digest = await crypto.subtle.digest('SHA-256', data);
+      return btoa(String.fromCharCode(...new Uint8Array(digest)))
+        .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+
+    async function loginWithSpotify() {
+      try {
+        const verifier = generateRandomString(128);
+        const challenge = await generateCodeChallenge(verifier);
+        localStorage.setItem('code_verifier', verifier);
+
+        const params = new URLSearchParams({
+          client_id: CLIENT_ID,
+          response_type: 'code',
+          redirect_uri: REDIRECT_URI,
+          scope: SCOPE,
+          code_challenge_method: 'S256',
+          code_challenge: challenge,
+          show_dialog: true // Forces the user to approve again
+        });
+
+        window.location.href = `https://accounts.spotify.com/authorize?${params.toString()}`;
+      } catch (error) {
+        console.error('Login error:', error);
+        const errorMsg = document.getElementById('error-message');
+        errorMsg.textContent = '❌ Something went wrong. Please try again.';
+        errorMsg.classList.add('show');
+      }
+    }
+
+    document.getElementById('login-button').addEventListener('click', loginWithSpotify);
+
+    // Also allow Enter key on the button
+    document.getElementById('login-button').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        loginWithSpotify();
+      }
+    });
+
+    console.log('🎵 SIA.play Login page ready');
+  </script>
+</body>
 </html>
