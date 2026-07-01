@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logging in...</title>
+</head>
+<body>
+    <script>
+        // Get the current origin dynamically
+        const currentOrigin = window.location.origin;
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const verifier = localStorage.getItem('code_verifier');
+
+        if (!code || !verifier) {
+            console.error('Missing code or verifier — redirecting to login');
+            window.location.href = '/dashboard.html';
+        }
+
+        async function getAccessToken() {
+            try {
+                const response = await fetch('https://accounts.spotify.com/api/token', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        client_id: '2572b4b9181f4c148d3cccfb02b935f7',
+                        grant_type: 'authorization_code',
+                        code: code,
+                        redirect_uri: currentOrigin + '/callback.html', // Dynamic redirect URI
+                        code_verifier: verifier,
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || !data.access_token) {
+                    console.error('Token exchange failed:', data);
+                    window.location.href = '/index.html?error=token_failed';
+                    return;
+                }
+
+                // Store tokens
+                localStorage.setItem('access_token', data.access_token);
+                
+                if (data.refresh_token) {
+                    localStorage.setItem('refresh_token', data.refresh_token);
+                    console.log('✅ Refresh token stored');
+                } else {
+                    console.warn('⚠️ No refresh token received');
+                }
+                
+                if (data.expires_in) {
+                    const expiryTime = Date.now() + (parseInt(data.expires_in) * 1000);
+                    localStorage.setItem('token_expiry', expiryTime.toString());
+                    console.log(`✅ Token expires at: ${new Date(expiryTime).toLocaleTimeString()}`);
+                }
+                
+                localStorage.removeItem('code_verifier');
+                
+                console.log('✅ Authentication successful!');
+                window.location.href = '/dashboard.html';
+                
+            } catch (error) {
+                console.error('Error during token exchange:', error);
+                window.location.href = '/index.html?error=exchange_failed';
+            }
+        }
+
+        getAccessToken();
+    </script>
+</body>
+</html>
