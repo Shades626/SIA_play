@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -437,4 +438,445 @@
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script type="module" src="script.js"></script>
   </body>
+=======
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIA.play</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav>
+      <div class="left-half">
+        <div class="logo">
+          <span class="logo_logo"><i class="fa-solid fa-headphones"></i></span>
+          <span class="logo_sia">SIA</span>
+          <span class="logo_play">.play</span>
+        </div>
+        <span class="home-icon" id="btn-home"><i class="fa-solid fa-house"></i></span>
+      </div>
+
+      <div class="right-half">
+        <div class="right-half-p1">
+          <span class="theme-toggle-btn" id="theme-toggle-btn"><i class="fa-regular fa-sun"></i></span>
+        </div>
+        <div class="right-half-p2">
+          <!-- Profile button — replaces logout btn -->
+          <div class="profile-btn-wrapper" id="profile-btn-wrapper">
+            <button class="profile-btn" id="profile-btn">
+              <!-- Avatar or fallback icon, filled by JS -->
+              <img src="" alt="" id="profile-avatar" class="profile-avatar is-hidden" />
+              <span class="profile-avatar-fallback" id="profile-avatar-fallback">
+                <i class="fa-solid fa-user"></i>
+              </span>
+              <span class="profile-name" id="profile-name">Account</span>
+              <i class="fa-solid fa-chevron-down profile-chevron" id="profile-chevron"></i>
+            </button>
+
+            <!-- Dropdown -->
+            <div class="profile-dropdown is-hidden" id="profile-dropdown">
+              <div class="profile-dropdown-info">
+                <img src="" alt="" id="profile-dropdown-avatar" class="profile-dropdown-avatar is-hidden" />
+                <div class="profile-dropdown-text">
+                  <span class="profile-dropdown-name" id="profile-dropdown-name">—</span>
+                  <span class="profile-dropdown-email" id="profile-dropdown-email">—</span>
+                </div>
+              </div>
+              <div class="profile-dropdown-divider"></div>
+              <button class="profile-dropdown-logout" id="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Log out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===================== MAIN LAYOUT ===================== -->
+    <div id="main" class="main">
+
+      <!-- ===== SIDEBAR ===== -->
+      <div class="side-bar">
+        <div class="home-search-your-library-container">
+          <span class="home-sidebar-btn">
+            <span class="icon-display-search-bar"><i class="fa-solid fa-house"></i></span>
+            <span class="icon-name-sidebar">Home</span>
+          </span>
+          <span id="btn-search-sidebar">
+            <span class="icon-display-search-bar"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <span class="icon-name-sidebar">Search</span>
+          </span>
+          <span id="btn-browse-sidebar">
+            <span class="icon-display-search-bar"><i class="fa-solid fa-list"></i></span>
+            <span class="icon-name-sidebar">Your library</span>
+          </span>
+          <span id="btn-nowPlaying-sidebar">
+            <span class="icon-display-search-bar"><i class="fa-solid fa-play"></i></span>
+            <span class="icon-name-sidebar">Now Playing</span>
+          </span>
+        </div>
+
+        <div class="playlist-toggle-container">
+          <span class="playlist-desc">Playlists</span>
+          <span class="create-playlist-btn" id="btn-create-playlist">
+            <span class="icon-display-search-bar"><i class="fa-solid fa-plus"></i></span>
+            <span class="icon-name-sidebar">Create Playlist</span>
+          </span>
+          <span class="liked-songs-btn">
+            <span class="icon-display-search-bar"><i class="fa-solid fa-heart"></i></span>
+            <span class="icon-name-sidebar">Liked Songs</span>
+          </span>
+        </div>
+
+        <div class="playlist-sidebar-display"></div>
+
+        <div class="toggle-and-collapse-container">
+          <span class="collapse-btn-sidebar"><i class="fa-solid fa-angle-left"></i></span>
+          <span class="mobile-theme-toggle-btn" id="theme-toggle-btn-mobile"><i class="fa-regular fa-sun"></i></span>
+        </div>
+      </div>
+
+      <!-- ===== MAIN CONTENT AREA ===== -->
+      <div class="multi-display-contain">
+
+        <!-- ── HOME VIEW ── -->
+        <div class="view-content" id="home-menu-display-container">
+          <div class="home-menu-display-header">
+            <span class="home-menu-header-btn">All</span>
+            <span class="home-menu-header-btn">Music</span>
+            <span class="home-menu-header-btn">Playlists</span>
+            <span class="page-expand-btn" data-target="home-menu-display-container"><i class="fa-solid fa-expand"></i></span>
+          </div>
+          <div class="home-playlist-card-holder"></div>
+          <div class="new-relelases-wrapper">
+            <button id="new-releases-scroll-left" class="new-releases-buttons"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="new-releases-for-you-contain" id="new-releases-for-you-contain"></div>
+            <button id="new-releases-scroll-right" class="new-releases-buttons"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+          <footer class="main-footer-styling">
+            <div class="footer-top">
+              <div class="footer-part">
+                <h1 class="footer-header">Company</h1>
+                <a href="#"><span class="footer-links">About</span></a>
+                <a href="#"><span class="footer-links">Jobs</span></a>
+                <a href="#"><span class="footer-links">For the Record</span></a>
+              </div>
+              <div class="footer-part">
+                <h1 class="footer-header">Useful Links</h1>
+                <a href="#"><span class="footer-links">Support</span></a>
+                <a href="#"><span class="footer-links">Free Mobile App</span></a>
+                <a href="#"><span class="footer-links">Import your music</span></a>
+              </div>
+              <div class="footer-part">
+                <h1 class="footer-header">Social Links</h1>
+                <a href="https://wa.link/q4m5dq" target="_blank"><span class="footer-links"><i class="fa-brands fa-whatsapp"></i> Whatsapp</span></a>
+                <a href="https://www.instagram.com/the_nerfed_0ne" target="_blank"><span class="footer-links"><i class="fa-brands fa-instagram"></i> Instagram</span></a>
+                <a href="https://t.me/SHADES626" target="_blank"><span class="footer-links"><i class="fa-brands fa-telegram"></i> Telegram</span></a>
+              </div>
+            </div>
+            <div class="footer-bottom"><span class="copyright">&copy; 2026 SIA.play Shades-co</span></div>
+          </footer>
+        </div>
+
+        <!-- ── SEARCH VIEW ── -->
+        <div id="search-menu-display-container" class="view-content is-hidden">
+          <div class="search-page-header">
+            <div class="page-header-row">
+              <h1 class="search-page-title">Search</h1>
+              <span class="page-expand-btn" data-target="search-menu-display-container"><i class="fa-solid fa-expand"></i></span>
+            </div>
+            <div class="search-page-bar">
+              <span class="search-page-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+              <input id="search-input" type="text" class="search-page-input" placeholder="What do you want to listen to?" autocomplete="off" />
+              <span class="search-page-clear" id="search-clear-btn"><i class="fa-solid fa-xmark"></i></span>
+            </div>
+          </div>
+          <div id="search-results-section" class="search-results-section is-hidden">
+            <h2 class="search-section-label">Results</h2>
+            <div id="search-results-container" class="search-results-grid"></div>
+          </div>
+          <div id="search-browse-categories" class="search-browse-categories">
+            <h2 class="search-section-label">Browse Categories</h2>
+            <div class="browse-card-container" id="search-category-grid"></div>
+          </div>
+        </div>
+
+        <!-- ── BROWSE / LIBRARY VIEW (dual purpose) ── -->
+        <div id="browse-menu-display-container" class="view-content is-hidden">
+          <div class="page-header-row">
+            <h1 style="color: var(--text-color); font-size: 1.5rem" id="browse-page-title">Browse All</h1>
+            <span class="page-expand-btn" data-target="browse-menu-display-container"><i class="fa-solid fa-expand"></i></span>
+          </div>
+          <div class="browse-card-container" id="browse-card-container">
+            <!-- Fallback static cards in case API fails (Browse mode only) -->
+            <div class="browse-cards" style="background-color:#E1118C"><span class="browse-card-text">Music</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:rgb(25,94,46)"><span class="browse-card-text">Podcasts</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:rgb(198,38,198)"><span class="browse-card-text">Live Events</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:#1E3264"><span class="browse-card-text">Made for You</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:#E8115B"><span class="browse-card-text">New Releases</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:#8D67AB"><span class="browse-card-text">Charts</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:#148A08"><span class="browse-card-text">Pop</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:#BA5D07"><span class="browse-card-text">Party</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:#BC316B"><span class="browse-card-text">Hip-hop</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:#E91429"><span class="browse-card-text">Rock</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:#777777"><span class="browse-card-text">Jazz</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+            <div class="browse-cards" style="background-color:#477E96"><span class="browse-card-text">Classical</span><img src="/assets/covers/Be_Easy_Odeal_cover.jpg" alt="" class="browse-card-img"></div>
+          </div>
+          <footer class="main-footer-styling">
+            <div class="footer-top">
+              <div class="footer-part">
+                <h1 class="footer-header">Company</h1>
+                <a href="#"><span class="footer-links">About</span></a>
+                <a href="#"><span class="footer-links">Jobs</span></a>
+                <a href="#"><span class="footer-links">For the Record</span></a>
+              </div>
+              <div class="footer-part">
+                <h1 class="footer-header">Useful Links</h1>
+                <a href="#"><span class="footer-links">Support</span></a>
+                <a href="#"><span class="footer-links">Free Mobile App</span></a>
+                <a href="#"><span class="footer-links">Import your music</span></a>
+              </div>
+              <div class="footer-part">
+                <h1 class="footer-header">Social Links</h1>
+                <a href="https://wa.link/q4m5dq" target="_blank"><span class="footer-links"><i class="fa-brands fa-whatsapp"></i> Whatsapp</span></a>
+                <a href="https://www.instagram.com/the_nerfed_0ne" target="_blank"><span class="footer-links"><i class="fa-brands fa-instagram"></i> Instagram</span></a>
+                <a href="https://t.me/SHADES626" target="_blank"><span class="footer-links"><i class="fa-brands fa-telegram"></i> Telegram</span></a>
+              </div>
+            </div>
+            <div class="footer-bottom"><span class="copyright">&copy; 2026 SIA.play Shades-co</span></div>
+          </footer>
+        </div>
+
+        <!-- ── NOW PLAYING FULL VIEW ── -->
+        <div id="now-playing-menu-display-container" class="view-content is-hidden">
+          <div class="song-now-playing-image-text-container">
+            <div class="song-now-playing-image"></div>
+            <div class="song-now-playing-texts-buttons">
+              <div class="song-now-playing-text-header">
+                <div class="now-playing-song-info">
+                  <span class="song-name-now-playing">—</span>
+                  <span class="artist-name-now-playing">—</span>
+                </div>
+              </div>
+              <div class="now-playing-btn-container">
+                <span class="now-playing-like-btn"><i class="fa-regular fa-heart"></i></span>
+                <span class="add-to-playList-now-playing" id="add-to-playlist-now-playing-btn"><i class="fa-solid fa-plus"></i></span>
+                <span class="queue-btn-now-playing" id="queue-btn-now-playing"><i class="fa-solid fa-indent"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="now-playing-controls-container">
+            <div class="now-playing-controls-top">
+              <div class="now-playing-range-container">
+                <input type="range" id="now-playing-range" value="0">
+              </div>
+              <div class="now-playing-progress-display">
+                <span>0:00</span>
+                <span>0:00</span>
+              </div>
+            </div>
+            <div class="now-playing-controls-bottom">
+              <div class="now-playing-bottom-contains">
+                <span id="shuffle-btn-now-playing"><i class="fa-solid fa-shuffle"></i></span>
+                <span id="repeat-btn-now-playing"><i class="fa-solid fa-repeat"></i></span>
+                <span><i class="fa-solid fa-share"></i></span>
+              </div>
+              <div class="now-playing-bottom-contains">
+                <span><i class="fa-solid fa-backward-step"></i></span>
+                <span id="play-pause-btn-now-playing-menu"><i class="fa-solid fa-play"></i></span>
+                <span><i class="fa-solid fa-forward-step"></i></span>
+              </div>
+              <div class="now-playing-bottom-contains">
+                <span>
+                  <span><i class="fa-solid fa-volume-up"></i></span>
+                  <span><input type="range" id="volume-slider-now-playing-menu" value="50"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PLAYLIST DETAIL VIEW — built dynamically by JS ── -->
+        <div id="playlist-detail-container" class="view-content is-hidden">
+          <div class="page-header-row">
+            <span class="page-expand-btn" data-target="playlist-detail-container"><i class="fa-solid fa-expand"></i></span>
+          </div>
+          <div class="playlist-detail-header">
+            <div class="playlist-detail-cover" id="playlist-detail-cover"></div>
+            <div class="playlist-detail-meta">
+              <span class="playlist-detail-label">Playlist</span>
+              <h1 class="playlist-detail-name" id="playlist-detail-name">—</h1>
+              <span class="playlist-detail-count" id="playlist-detail-count">0 songs</span>
+            </div>
+          </div>
+          <div class="playlist-detail-tracklist" id="playlist-detail-tracklist">
+            <!-- JS fills this in -->
+          </div>
+        </div>
+
+      </div>
+      <!-- END MAIN CONTENT AREA -->
+
+      <!-- ===== RIGHT PANEL — NOW PLAYING INFO ===== -->
+      <div class="now-playing">
+        <div class="playlist-display-header">
+          <div class="playlist-display-header-pt1">
+            <span id="collapse-info-screen-btn"><i class="fa-solid fa-arrow-left"></i></span>
+            <span id="playlist-name-display">—</span>
+          </div>
+          <div class="playlist-display-header-pt2">
+            <span id="more-options-btn"><i class="fa-solid fa-ellipsis"></i></span>
+            <span id="now-playing-expand-btn"><i class="fa-solid fa-expand"></i></span>
+          </div>
+        </div>
+
+        <!-- Album art + song info -->
+        <div class="now-playing-pt1">
+          <img src="" alt="Album Cover" id="album-song-cover-img" />
+          <div class="details-button-container">
+            <div class="song-details">
+              <span id="song-name">—</span>
+              <span id="song-artiste">—</span>
+            </div>
+            <div class="song-share-save-btn-container">
+              <button id="song-share-btn"><i class="fa-regular fa-share-from-square"></i></button>
+              <button id="song-save-btn"><i class="fa-solid fa-circle-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Similar songs — populated by fetchSimilarSongs() -->
+        <div class="similar-songs-display">
+          <span class="similar-songs-text">Similar Songs</span>
+          <div class="similar-song-display-container" id="similar-songs-container">
+            <!-- JS fills this in -->
+          </div>
+        </div>
+
+        <!-- About artist — populated by fetchArtistInfo() -->
+        <div class="about-artist-container">
+          <!-- Artist banner image, set via JS -->
+          <div class="about-artist-text-image-container" id="about-artist-banner">About the artist</div>
+          <div class="about-artist-info-button-container">
+            <div class="about-artist-info">
+              <div class="pseudo_container">
+                <span class="about-artist-name-display" id="about-artist-name">—</span>
+                <span class="monthly-listeners-display" id="about-artist-listeners">— monthly listeners</span>
+              </div>
+              <span class="follow-artist-btn">Follow</span>
+            </div>
+          </div>
+          <span class="about-artist-description" id="about-artist-desc"></span>
+        </div>
+
+        <!-- Credits -->
+        <div class="credits-for-song">
+          <div class="credits-for-song-header">
+            <span class="credits-display">Credits</span>
+            <span class="show-all-btn">Show all</span>
+          </div>
+          <div class="credits-for-song-container" id="credits-container">
+            <!-- JS fills this in -->
+          </div>
+        </div>
+
+      </div>
+      <!-- END RIGHT PANEL -->
+
+    </div>
+
+    <!-- ===================== CREATE PLAYLIST MODAL ===================== -->
+    <div id="create-playlist-modal" class="modal-overlay is-hidden">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h2>Create Playlist</h2>
+          <span class="modal-close-btn" id="create-playlist-close"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+
+        <div class="modal-body">
+          <!-- Image upload -->
+          <div class="playlist-image-upload" id="playlist-image-upload">
+            <img src="" alt="" id="playlist-image-preview" class="is-hidden" />
+            <span class="playlist-image-placeholder" id="playlist-image-placeholder">
+              <i class="fa-solid fa-music"></i>
+              <span>Choose photo</span>
+            </span>
+            <input type="file" id="playlist-image-input" accept="image/jpeg,image/png" class="is-hidden" />
+          </div>
+
+          <!-- Name field -->
+          <label class="modal-label" for="playlist-name-input">Name</label>
+          <input type="text" id="playlist-name-input" class="modal-input" placeholder="My Playlist #1" maxlength="100" />
+
+          <p class="modal-error is-hidden" id="create-playlist-error"></p>
+        </div>
+
+        <div class="modal-footer">
+          <button class="modal-btn-secondary" id="create-playlist-cancel">Cancel</button>
+          <button class="modal-btn-primary" id="create-playlist-confirm">Create</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== ADD TO PLAYLIST MODAL ===================== -->
+    <div id="add-to-playlist-modal" class="modal-overlay is-hidden">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h2>Add to Playlist</h2>
+          <span class="modal-close-btn" id="add-to-playlist-close"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+
+        <div class="modal-body">
+          <div class="add-to-playlist-new-btn" id="add-to-playlist-new-btn">
+            <span class="add-to-playlist-new-icon"><i class="fa-solid fa-plus"></i></span>
+            <span>New playlist</span>
+          </div>
+          <div class="add-to-playlist-list" id="add-to-playlist-list">
+            <!-- JS fills this in with the user's playlists -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== QUEUE MODAL ===================== -->
+    <div id="queue-modal" class="modal-overlay is-hidden">
+      <div class="modal-box queue-modal-box">
+        <div class="modal-header">
+          <h2>Queue</h2>
+          <span class="modal-close-btn" id="queue-modal-close"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+
+        <div class="modal-body">
+          <!-- Now playing -->
+          <div class="queue-section">
+            <span class="queue-section-label">Now Playing</span>
+            <div id="queue-now-playing-row">
+              <!-- JS fills this in -->
+            </div>
+          </div>
+
+          <!-- Up next -->
+          <div class="queue-section">
+            <span class="queue-section-label">Next Up</span>
+            <div id="queue-next-list">
+              <!-- JS fills this in -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
+>>>>>>> 2323f3ae34268210b57d4ace81b14f1c73524bdd
 </html>
