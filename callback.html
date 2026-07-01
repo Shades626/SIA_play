@@ -7,6 +7,9 @@
 </head>
 <body>
     <script>
+        // Get the current origin dynamically
+        const currentOrigin = window.location.origin;
+        
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
         const verifier = localStorage.getItem('code_verifier');
@@ -25,7 +28,7 @@
                         client_id: '2572b4b9181f4c148d3cccfb02b935f7',
                         grant_type: 'authorization_code',
                         code: code,
-                        redirect_uri: currentOrigin + '/callback.html',
+                        redirect_uri: currentOrigin + '/callback.html', // Dynamic redirect URI
                         code_verifier: verifier,
                     })
                 });
@@ -41,7 +44,6 @@
                 // Store tokens
                 localStorage.setItem('access_token', data.access_token);
                 
-                // Store refresh token if provided
                 if (data.refresh_token) {
                     localStorage.setItem('refresh_token', data.refresh_token);
                     console.log('✅ Refresh token stored');
@@ -49,14 +51,12 @@
                     console.warn('⚠️ No refresh token received');
                 }
                 
-                // Store expiry time
                 if (data.expires_in) {
                     const expiryTime = Date.now() + (parseInt(data.expires_in) * 1000);
                     localStorage.setItem('token_expiry', expiryTime.toString());
                     console.log(`✅ Token expires at: ${new Date(expiryTime).toLocaleTimeString()}`);
                 }
                 
-                // Clean up
                 localStorage.removeItem('code_verifier');
                 
                 console.log('✅ Authentication successful!');
