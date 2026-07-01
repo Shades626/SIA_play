@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sia.play - Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #121212;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    }
+
+    .login-container {
+      background: rgba(24, 24, 24, 0.9);
+      padding: 60px 50px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .logo {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .logo_sia {
+      color: #1DB954;
+    }
+
+    .logo_play {
+      color: #ffffff;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      color: #1DB954;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .subtitle {
+      color: #b3b3b3;
+      font-size: 0.95rem;
+      margin-bottom: 35px;
+      line-height: 1.6;
+    }
+
+    .login-btn {
+      background: #1DB954;
+      color: white;
+      border: none;
+      padding: 16px 45px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .login-btn:hover {
+      background: #1ed760;
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(29, 185, 84, 0.3);
+    }
+
+    .login-btn:active {
+      transform: scale(0.98);
+    }
+
+    .login-btn i {
+      font-size: 1.3rem;
+    }
+
+    .features {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    .features span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .features i {
+      color: #1DB954;
+      font-size: 0.9rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 25px 0;
+    }
+
+    .footer-text {
+      color: #555;
+      font-size: 0.75rem;
+      margin-top: 20px;
+    }
+
+    .error-message {
+      background: rgba(255, 0, 0, 0.1);
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      color: #ff6b6b;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 40px 30px;
+      }
+      
+      .logo {
+        font-size: 2.2rem;
+      }
+      
+      .login-btn {
+        padding: 14px 30px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="login-container">
+    <span class="logo-icon"><i class="fa-solid fa-headphones"></i></span>
+    
+    <div class="logo">
+      <span class="logo_sia">SIA</span><span class="logo_play">.play</span>
+    </div>
+    
+    <p class="subtitle">
+      Listen to music, discover new tracks,<br>
+      and create the perfect playlist
+    </p>
+
+    <div id="error-message" class="error-message"></div>
+
+    <button id="login-button" class="login-btn">
+      <i class="fa-brands fa-spotify"></i>
+      Continue with Spotify
+    </button>
+
+    <hr class="divider">
+
+    <div class="features">
+      <span><i class="fa-solid fa-check"></i> Free</span>
+      <span><i class="fa-solid fa-check"></i> High Quality</span>
+      <span><i class="fa-solid fa-check"></i> Unlimited</span>
+    </div>
+
+    <div class="footer-text">
+      By continuing, you agree to our Terms of Service
+    </div>
+  </div>
+
+  <script>
+    const CLIENT_ID = '2572b4b9181f4c148d3cccfb02b935f7';
+    const REDIRECT_URI = 'http://127.0.0.1:5500/callback.html';
+    const SCOPE = 'user-read-private user-read-email streaming user-top-read user-modify-playback-state user-read-playback-state';
+
+    // Check if there was an error in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+    
+    if (error) {
+      const errorMsg = document.getElementById('error-message');
+      errorMsg.textContent = `❌ Login failed: ${error.replace('_', ' ')}. Please try again.`;
+      errorMsg.classList.add('show');
+    }
+
+    function generateRandomString(length) {
+      const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const values = crypto.getRandomValues(new Uint8Array(length));
+      return values.reduce((acc, x) => acc + possible[x % possible.length], "");
+    }
+
+    async function generateCodeChallenge(verifier) {
+      const data = new TextEncoder().encode(verifier);
+      const digest = await crypto.subtle.digest('SHA-256', data);
+      return btoa(String.fromCharCode(...new Uint8Array(digest)))
+        .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+
+    async function loginWithSpotify() {
+      try {
+        const verifier = generateRandomString(128);
+        const challenge = await generateCodeChallenge(verifier);
+        localStorage.setItem('code_verifier', verifier);
+
+        const params = new URLSearchParams({
+          client_id: CLIENT_ID,
+          response_type: 'code',
+          redirect_uri: REDIRECT_URI,
+          scope: SCOPE,
+          code_challenge_method: 'S256',
+          code_challenge: challenge,
+          show_dialog: true // Forces the user to approve again
+        });
+
+        window.location.href = `https://accounts.spotify.com/authorize?${params.toString()}`;
+      } catch (error) {
+        console.error('Login error:', error);
+        const errorMsg = document.getElementById('error-message');
+        errorMsg.textContent = '❌ Something went wrong. Please try again.';
+        errorMsg.classList.add('show');
+      }
+    }
+
+    document.getElementById('login-button').addEventListener('click', loginWithSpotify);
+
+    // Also allow Enter key on the button
+    document.getElementById('login-button').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        loginWithSpotify();
+      }
+    });
+
+    console.log('🎵 SIA.play Login page ready');
+  </script>
+</body>
+</html>

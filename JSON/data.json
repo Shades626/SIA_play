@@ -1,0 +1,51 @@
+{
+    "Artists": [
+        {
+            "artist_id": 1, 
+            "artist_name": "Odeal", 
+            "artist_image_url": "https://files.catbox.moe/2pblv3.jpg",
+            "country": "Nigeria",
+            "about_artist": "A master of Afro-fusion, Odeal blends hypnotic rhythms with soulful R&B melodies. His sound captures the essence of the modern African diaspora, offering a smooth, atmospheric listening experience."
+        },
+
+        {
+            "artist_id": 2,
+            "artist_name": "Tems",
+            "artist_image_url": "",
+            "country": "Nigeria",
+            "about_artist": "With a voice that resonates globally, Tems combines alternative soul with Afrobeats to create a sound that is both raw and refined. She is a pioneer of the new-wave Nigerian sound, known for her deep, reflective lyrics."
+        },
+
+        {
+            "artist_id": 3,
+            "artist_name": "Davido",
+            "artist_image_url": "https://files.catbox.moe/dji2w0.jpg",
+            "country": "Nigeria",
+            "about_artist": "A global icon and pioneer of modern Afrobeats, Davido has redefined the African music landscape with his infectious energy and genre-blending sound. From 'Dami Duro' to 'Timeless,' his music bridges cultural divides, blending elements of Afropop, dancehall, and Amapiano to create a sound that resonates on every continent."
+        },
+
+        {
+            "artist_id": 4,
+            "artist_name": "Ayra_Starr",
+            "artist_image_url": "https://files.catbox.moe/6di2oo.jpg",
+            "country": "Nigeria",
+            "about_artist": "Representing the vibrant energy of the new generation, Ayra Starr delivers sharp, confident lyrics over slick, modern production. Her sound is the definition of trendy, youthful Afropop."
+        },
+
+        {
+            "artist_id": 5,
+            "artist_name": "Burna Boy",
+            "artist_image_url": "https://files.catbox.moe/ystgpv.jpg",
+            "country": "Nigeria",
+            "about_artist": "The 'African Giant.' Burna Boy merges dancehall, reggae, and Afrobeats into a powerhouse sound that has captivated the world. His music is deeply rooted in African culture, delivered with bold, infectious energy."
+        },
+
+        {
+            "artist_id": 6,
+            "artist_name": "Mayorkun",
+            "artist_image_url": "https://files.catbox.moe/ms9oo7.jpg",
+            "country": "Nigeria",
+            "about_artist": "Known as the 'Mayor of Lagos,' Mayorkun brings a smooth, melodic flair to the Afrobeats scene. With his versatile songwriting and signature vocal style, he has consistently delivered chart-topping hits that capture the vibrancy of modern urban Nigerian life, establishing himself as a true force in contemporary pop."
+        }
+    ]
+}
