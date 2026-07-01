@@ -195,8 +195,15 @@
 
   <script>
     const CLIENT_ID = '2572b4b9181f4c148d3cccfb02b935f7';
-    const REDIRECT_URI = 'http://127.0.0.1:5500/callback.html';
+    
+    // 🔥 FIX: Dynamically get the current URL - works on localhost AND deployment!
+    const currentOrigin = window.location.origin;
+    const REDIRECT_URI = currentOrigin + '/callback.html';
     const SCOPE = 'user-read-private user-read-email streaming user-top-read user-modify-playback-state user-read-playback-state';
+
+    // Log the current environment for debugging
+    console.log('🌐 Current Origin:', currentOrigin);
+    console.log('🔗 Redirect URI:', REDIRECT_URI);
 
     // Check if there was an error in the URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -230,14 +237,16 @@
         const params = new URLSearchParams({
           client_id: CLIENT_ID,
           response_type: 'code',
-          redirect_uri: REDIRECT_URI,
+          redirect_uri: REDIRECT_URI, // 🔥 Now dynamic!
           scope: SCOPE,
           code_challenge_method: 'S256',
           code_challenge: challenge,
-          show_dialog: true // Forces the user to approve again
+          show_dialog: true
         });
 
-        window.location.href = `https://accounts.spotify.com/authorize?${params.toString()}`;
+        const authUrl = `https://accounts.spotify.com/authorize?${params.toString()}`;
+        console.log('🚀 Redirecting to:', authUrl);
+        window.location.href = authUrl;
       } catch (error) {
         console.error('Login error:', error);
         const errorMsg = document.getElementById('error-message');
